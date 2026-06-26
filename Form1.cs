@@ -14,60 +14,25 @@ namespace Learning_GUI
 {
     public partial class Form1 : Form
     {
-        public List<Expense> expenses = new List<Expense>();
-        public string[] categories;
         public Form1()
         {
             InitializeComponent();
-            categories = new string[] { "Food", "Entertain"};
-            comboBox1.Items.AddRange(categories);
+            poller.Start();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        
+        public void UpdatingMetrics(object source, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if(string.IsNullOrWhiteSpace(expenseBox.Text))
+            Process[] current = Process.GetProcesses();
+            List<ProcessSnapshot> snapshots = current.Select(p => new ProcessSnapshot()
             {
-                MessageBox.Show("Please enter your expense");
-                return;
-            }
+                Name = p.ProcessName,
+                PID = p.Id,
+                MemoryMB = p.WorkingSet64 / 1024 / 1024,
+                RawProcess = p
+            }).ToList();
 
-            if(comboBox1.SelectedItem == null && string.IsNullOrWhiteSpace(comboBox1.Text))
-            {
-                MessageBox.Show("Please enter your category");
-                comboBox1.Focus();
-                return;
-            }
-
-            if(quantity.Value == 0)
-            {
-                MessageBox.Show("Plese enter your quantity");
-                return;
-            }
-
-            var category = comboBox1.Text;
-
-            expenses.Add(new Expense(expenseBox.Text, quantity.Value, comboBox1.Text));
-
-            expenseBox.Clear();
-            quantity.ResetText();
-            comboBox1.ResetText();
-
-
-            RefreshListBox(listBox1, expenses);
-            RefreshDgv(dataGridView1, expenses);
-
-            expenseBox.Focus();
-        }
-
-        private void clearAll_btn(object source, EventArgs e)
-        {
-            expenses.Clear();
-            dataGridView1.DataSource = null;
+            RefreshDgv(dataGridView1, snapshots);
         }
 
         private void RefreshListBox<T>(ListBox listBox, List<T> list)
@@ -83,18 +48,25 @@ namespace Learning_GUI
         }
     }
 
-    public class Expense
+    public class ProcessSnapshot
     {
         public string Name { get; set; }
-        public decimal Quantity { get; set; }
+        public int PID {  get; set; }
 
-        public string Category { get; set; }
+        public float MemoryMB { get; set; }
 
-        public Expense(string name, decimal quantity, string category)
+        public Process RawProcess { get; set; }
+
+        private Button _killProcess;
+
+        public ProcessSnapshot()
         {
-            Name = name;
-            Quantity = quantity;
-            Category = category;
+            _killProcess = new Button()
+            {
+
+
+            };
         }
     }
+
 }
