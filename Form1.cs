@@ -63,18 +63,9 @@ namespace Learning_GUI
 
         public float MemoryMB { get; set; }
 
+        [Browsable(false)]
         public Process RawProcess { get; set; }
 
-        private Button _killProcess;
-
-        public ProcessSnapshot()
-        {
-            _killProcess = new Button()
-            {
-
-
-            };
-        }
     }
 
 }

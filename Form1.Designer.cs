@@ -1,4 +1,6 @@
-﻿namespace Learning_GUI
+﻿using System.Windows.Forms;
+
+namespace Learning_GUI
 {
     partial class Form1
     {
@@ -48,6 +50,14 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 211);
             this.dataGridView1.TabIndex = 0;
+
+            DataGridViewButtonColumn killCol = new DataGridViewButtonColumn();
+            killCol.Name = "kill";
+            killCol.Text = "kill";
+            killCol.HeaderText = "";
+            killCol.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(killCol);
+
             // 
             // label1
             // 
