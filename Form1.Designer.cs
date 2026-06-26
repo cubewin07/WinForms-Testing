@@ -56,6 +56,13 @@ namespace Learning_GUI
             killCol.Text = "kill";
             killCol.HeaderText = "";
             killCol.UseColumnTextForButtonValue = true;
+            
+
+            dataGridView1.AutoGenerateColumns = false;
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Name", HeaderText = "Name", Name = "Name" });
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "PID", HeaderText = "PID", Name = "PID" });
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "MemoryMB", HeaderText = "Memory (MB)" , Name = "MemoryMB" });
             dataGridView1.Columns.Add(killCol);
 
             dataGridView1.CellContentClick += this.kill;

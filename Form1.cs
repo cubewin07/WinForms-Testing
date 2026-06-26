@@ -55,7 +55,7 @@ namespace Learning_GUI
             view.DataSource = list;
         }
 
-        private void kill(object sender, EventArgs e)
+        private void kill(object sender, DataGridViewCellEventArgs e)
         {
             if(e.ColumnIndex == dataGridView1.Columns["kill"].Index && e.RowIndex >= 0)
             {
@@ -65,7 +65,7 @@ namespace Learning_GUI
                     Process.GetProcessById(pid).Kill();
                 } catch
                 {
-                    MessageBox.Show("Cannot kill")
+                    MessageBox.Show("Cannot kill");
                 }
             }
         }
