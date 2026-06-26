@@ -15,9 +15,12 @@ namespace Learning_GUI
     public partial class Form1 : Form
     {
         public List<Expense> expenses = new List<Expense>();
+        public string[] categories;
         public Form1()
         {
             InitializeComponent();
+            categories = new string[] { "Food", "Entertain"};
+            comboBox1.Items.AddRange(categories);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -32,6 +35,14 @@ namespace Learning_GUI
                 MessageBox.Show("Please enter your expense");
                 return;
             }
+
+            if(comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Please enter your category");
+                comboBox1.Focus();
+                return;
+            }
+
             if(quantity.Value == 0)
             {
                 MessageBox.Show("Plese enter your quantity");
