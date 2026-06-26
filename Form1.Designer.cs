@@ -58,6 +58,7 @@ namespace Learning_GUI
             killCol.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(killCol);
 
+            dataGridView1.CellContentClick += this.kill;
             // 
             // label1
             // 

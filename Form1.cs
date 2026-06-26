@@ -54,6 +54,21 @@ namespace Learning_GUI
             view.DataSource = null;
             view.DataSource = list;
         }
+
+        private void kill(object sender, EventArgs e)
+        {
+            if(e.ColumnIndex == dataGridView1.Columns["kill"].Index && e.RowIndex >= 0)
+            {
+                int pid = (int)dataGridView1.Rows[e.RowIndex].Cells["PID"].Value;
+                try
+                {
+                    Process.GetProcessById(pid).Kill();
+                } catch
+                {
+                    MessageBox.Show("Cannot kill")
+                }
+            }
+        }
     }
 
     public class ProcessSnapshot
