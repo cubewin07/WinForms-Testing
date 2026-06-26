@@ -45,6 +45,12 @@ namespace Learning_GUI
             RefreshDgv(dataGridView1, expenses);
         }
 
+        private void clearAll_btn(object source, EventArgs e)
+        {
+            expenses.Clear();
+            dataGridView1.DataSource = null;
+        }
+
         private void RefreshListBox<T>(ListBox listBox, List<T> list)
         {
             listBox.DataSource = null;

@@ -34,6 +34,7 @@
             this.total = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clearAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.quantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -88,11 +89,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(331, 150);
             this.dataGridView1.TabIndex = 5;
             // 
+            // button1
+            // 
+            this.clearAll.Location = new System.Drawing.Point(567, 155);
+            this.clearAll.Name = "button1";
+            this.clearAll.Size = new System.Drawing.Size(75, 23);
+            this.clearAll.TabIndex = 6;
+            this.clearAll.Text = "clear all";
+            this.clearAll.UseVisualStyleBackColor = true;
+            this.clearAll.Click += new System.EventHandler(this.clearAll_btn);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.clearAll);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.total);
@@ -116,6 +128,7 @@
         private System.Windows.Forms.Label total;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button clearAll;
     }
 }
 
