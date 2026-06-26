@@ -14,6 +14,8 @@ namespace Learning_GUI
 {
     public partial class Form1 : Form
     {
+        public PerformanceCounter CpuCounter { get; set; } = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+        public PerformanceCounter ramCounter { get; set; } = new PerformanceCounter("Memory", "Available MBytes");
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +35,12 @@ namespace Learning_GUI
             }).ToList();
 
             RefreshDgv(dataGridView1, snapshots);
+
+            float cpu = CpuCounter.NextValue();
+            float ram = ramCounter.NextValue();
+
+            label1.Text = cpu.ToString();
+            label2.Text = ram.ToString();
         }
 
         private void RefreshListBox<T>(ListBox listBox, List<T> list)
