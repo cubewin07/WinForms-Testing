@@ -40,6 +40,9 @@ namespace Learning_GUI
 
             expenses.Add(new Expense(expenseBox.Text, quantity.Value));
 
+            expenseBox.Clear();
+            quantity.ResetText();
+
 
             RefreshListBox(listBox1, expenses);
             RefreshDgv(dataGridView1, expenses);
