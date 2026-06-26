@@ -36,7 +36,7 @@ namespace Learning_GUI
                 return;
             }
 
-            if(comboBox1.SelectedItem == null)
+            if(comboBox1.SelectedItem == null && string.IsNullOrWhiteSpace(comboBox1.Text))
             {
                 MessageBox.Show("Please enter your category");
                 comboBox1.Focus();
@@ -49,10 +49,13 @@ namespace Learning_GUI
                 return;
             }
 
-            expenses.Add(new Expense(expenseBox.Text, quantity.Value));
+            var category = comboBox1.Text;
+
+            expenses.Add(new Expense(expenseBox.Text, quantity.Value, comboBox1.Text));
 
             expenseBox.Clear();
             quantity.ResetText();
+            comboBox1.ResetText();
 
 
             RefreshListBox(listBox1, expenses);
@@ -85,10 +88,13 @@ namespace Learning_GUI
         public string Name { get; set; }
         public decimal Quantity { get; set; }
 
-        public Expense(string name, decimal quantity)
+        public string Category { get; set; }
+
+        public Expense(string name, decimal quantity, string category)
         {
             Name = name;
             Quantity = quantity;
+            Category = category;
         }
     }
 }
