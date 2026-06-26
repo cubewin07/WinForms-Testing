@@ -46,6 +46,8 @@ namespace Learning_GUI
 
             RefreshListBox(listBox1, expenses);
             RefreshDgv(dataGridView1, expenses);
+
+            expenseBox.Focus();
         }
 
         private void clearAll_btn(object source, EventArgs e)
